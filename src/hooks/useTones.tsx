@@ -9,29 +9,15 @@ const useTones = () => {
   const synth1 = useRef<Tone.Synth | null>(null)
   const synth2 = useRef<Tone.Synth | null>(null)
 
-  // BUG init, start, & stop for Tone are not working
-  // i think it's a timing issue
-  // i had it working earlier but i think i let ai overwrite something by accident
-
-  useEffect(() => {
-    console.log({ isPlaying, hasToneInit })
-
-    if (isPlaying && !hasToneInit) {
-      console.log('instantiate tone... this should only happen once')
-      Tone.start().then(() => {
-        synth1.current = new Tone.Synth().toDestination()
-        synth2.current = new Tone.Synth().toDestination()
-        setHasToneInit(true)
-      })
-    }
-  }, [isPlaying, hasToneInit])
-
-  useEffect(() => {
+  /**
+   * Handle synth operations
+   */
+  const handleSynthOperations = () => {
     if (isPlaying) {
       if (synth1.current && synth2.current) {
         synth1.current.triggerAttack(frequency1)
         synth2.current.triggerAttack(frequency2)
-        console.log('synth exists', { frequency1, frequency2 })
+        console.log('synth update', { frequency1, frequency2 })
       } else {
         console.log('no synth')
       }
@@ -41,11 +27,28 @@ const useTones = () => {
         synth2.current.triggerRelease()
       }
     }
+  }
+
+  /**
+   * Handle tone initialization
+   */
+  useEffect(() => {
+    if (isPlaying && !hasToneInit) {
+      console.log('instantiate tone... this should only happen once')
+      Tone.start().then(() => {
+        synth1.current = new Tone.Synth().toDestination()
+        synth2.current = new Tone.Synth().toDestination()
+        setHasToneInit(true)
+        handleSynthOperations()
+      })
+    } else {
+      handleSynthOperations()
+    }
 
     return () => {
       if (synth1.current && synth2.current) {
-        synth1.current.dispose()
-        synth2.current.dispose()
+        synth1.current.triggerRelease()
+        synth2.current.triggerRelease()
       }
     }
   }, [isPlaying])
