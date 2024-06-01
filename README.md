@@ -13,5 +13,7 @@ Canvas
 UI
 
 - Control a general base frequency
+  - Base freq hard-panned left
+  - Harmony freq hard-panned right
 - Control the difference between two tones to produce varying beat frequencies
 - Use [Tone.js](https://tonejs.github.io/)

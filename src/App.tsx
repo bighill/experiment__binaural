@@ -14,6 +14,12 @@ function App() {
     setIsPlaying(!isPlaying)
   }
 
+  // TODO refactor/rename _frequency_
+  // interface Frequency {
+  //   base: number
+  //   harmony: number
+  // }
+
   return (
     <main>
       <input

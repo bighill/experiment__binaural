@@ -9,6 +9,10 @@ const useTones = () => {
   const synth1 = useRef<Tone.Synth | null>(null)
   const synth2 = useRef<Tone.Synth | null>(null)
 
+  // BUG init, start, & stop for Tone are not working
+  // i think it's a timing issue
+  // i had it working earlier but i think i let ai overwrite something by accident
+
   useEffect(() => {
     console.log({ isPlaying, hasToneInit })
 
