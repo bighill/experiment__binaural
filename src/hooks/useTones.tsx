@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import * as Tone from 'tone'
 
 // TODO update harmonyFreq when baseFreq or beatFreq changes regardless of whether isPlaying
-// TODO listen for oscillator change and update synthLeft and synthRight
 
 function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
@@ -11,7 +10,7 @@ function useTones() {
   const [oscillator, setOscillator] = useState<OscillatorType>('square')
   const [baseFreq, setBaseFreq] = useState(100)
   const [harmonyFreq, setHarmonyFreq] = useState(110)
-  const [beatFreq, setBeatFreq] = useState(10)
+  const [beatFreq, setBeatFreq] = useState(2)
 
   /**
    * Set these vars here
@@ -26,7 +25,11 @@ function useTones() {
    * Handle init synth tones
    */
   const handleInitSynth = () => {
-    console.log('instantiate tone... this should only happen once')
+    if (synthLeft.current && synthRight.current) {
+      synthLeft.current.dispose()
+      synthRight.current.dispose()
+    }
+
     Tone.start().then(() => {
       synthLeft.current = new Tone.Synth({
         volume: volume,
@@ -86,7 +89,7 @@ function useTones() {
   }, [isPlaying])
 
   /**
-   * Set volume
+   * Update volume
    */
   useEffect(() => {
     if (isPlaying && synthLeft.current && synthRight.current) {
@@ -96,7 +99,16 @@ function useTones() {
   }, [volume])
 
   /**
-   * Set base frequency
+   * Update oscillator
+   */
+  useEffect(() => {
+    if (isPlaying && synthLeft.current && synthRight.current) {
+      handleInitSynth()
+    }
+  }, [oscillator])
+
+  /**
+   * Update base frequency
    */
   useEffect(() => {
     if (isPlaying && synthLeft.current) {
@@ -105,7 +117,7 @@ function useTones() {
   }, [baseFreq])
 
   /**
-   * Set harmony frequency
+   * Update harmony frequency
    */
   useEffect(() => {
     if (isPlaying && synthRight.current) {
@@ -114,7 +126,7 @@ function useTones() {
   }, [harmonyFreq])
 
   /**
-   * Set beat frequency
+   * Update beat frequency
    */
   useEffect(() => {
     if (isPlaying && synthLeft.current && synthRight.current) {
