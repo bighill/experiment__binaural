@@ -1,10 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 import * as Tone from 'tone'
 
+// TODO update harmonyFreq when baseFreq or beatFreq changes regardless of whether isPlaying
+// TODO listen for oscillator change and update synthLeft and synthRight
+
 function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(-20)
+  const [oscillator, setOscillator] = useState<OscillatorType>('square')
   const [baseFreq, setBaseFreq] = useState(100)
   const [harmonyFreq, setHarmonyFreq] = useState(110)
   const [beatFreq, setBeatFreq] = useState(10)
@@ -19,9 +23,35 @@ function useTones() {
   const panRight = useRef<Tone.Panner | null>(null)
 
   /**
-   * Handle update synth
+   * Handle init synth tones
    */
-  const handleUpdateSynth = () => {
+  const handleInitSynth = () => {
+    console.log('instantiate tone... this should only happen once')
+    Tone.start().then(() => {
+      synthLeft.current = new Tone.Synth({
+        volume: volume,
+        oscillator: { type: oscillator },
+      }).toDestination()
+
+      synthRight.current = new Tone.Synth({
+        volume: volume,
+        oscillator: { type: oscillator },
+      }).toDestination()
+
+      panLeft.current = new Tone.Panner(-1).toDestination()
+      panRight.current = new Tone.Panner(1).toDestination()
+      synthLeft.current.connect(panLeft.current)
+      synthRight.current.connect(panRight.current)
+
+      setHasToneInit(true)
+      handlePlayPause()
+    })
+  }
+
+  /**
+   * Handle play/pause synth tones
+   */
+  const handlePlayPause = () => {
     if (isPlaying) {
       if (synthLeft.current && synthRight.current) {
         synthLeft.current.triggerAttack(baseFreq)
@@ -42,20 +72,9 @@ function useTones() {
    */
   useEffect(() => {
     if (isPlaying && !hasToneInit) {
-      console.log('instantiate tone... this should only happen once')
-      Tone.start().then(() => {
-        synthLeft.current = new Tone.Synth({ volume: volume }).toDestination()
-        synthRight.current = new Tone.Synth({ volume: volume }).toDestination()
-        panLeft.current = new Tone.Panner(-1).toDestination()
-        panRight.current = new Tone.Panner(1).toDestination()
-        synthLeft.current.connect(panLeft.current)
-        synthRight.current.connect(panRight.current)
-
-        setHasToneInit(true)
-        handleUpdateSynth()
-      })
+      handleInitSynth()
     } else {
-      handleUpdateSynth()
+      handlePlayPause()
     }
 
     return () => {
@@ -102,7 +121,6 @@ function useTones() {
       const _harmonyFreq = baseFreq + beatFreq
       synthRight.current.frequency.setValueAtTime(_harmonyFreq, Tone.now())
       setHarmonyFreq(_harmonyFreq)
-      console.log(_harmonyFreq)
     }
   }, [baseFreq, beatFreq])
 
@@ -112,12 +130,13 @@ function useTones() {
     setIsPlaying,
     volume,
     setVolume,
+    oscillator,
+    setOscillator,
     basePan: panLeft.current?.pan.value,
     harmonyPan: panRight.current?.pan.value,
     baseFreq,
     setBaseFreq,
     harmonyFreq,
-    setHarmonyFreq,
     beatFreq,
     setBeatFreq,
   }

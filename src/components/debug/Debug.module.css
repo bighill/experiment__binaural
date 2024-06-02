@@ -1,18 +1,30 @@
-.debug {
+.table {
   display: table;
 }
 
-.row {
+.tr {
   display: table-row;
+}
 
-  div {
-    display: table-cell;
-    text-align: right;
-  }
+.tdLeft,
+.tdRight {
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 0.5rem;
+}
 
-  div.value {
-    color: var(--color---);
-    padding: 0 0.25rem 0.5rem 0.5rem;
-    min-width: 2rem;
-  }
+.tdLeft {
+  text-align: right;
+}
+
+.tdRight {
+  padding-left: 0.5rem;
+}
+
+.value {
+  display: inline-block;
+  color: var(--color---);
+  min-width: 2rem;
+  text-align: right;
+  padding-right: 0.5rem;
 }

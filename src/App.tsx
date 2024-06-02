@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import Controls1 from './components/controls_1/Controls1'
 import useTones from './hooks/useTones'
 import Debug from './components/debug/Debug'
@@ -11,10 +9,11 @@ function App() {
     setVolume,
     isPlaying,
     setIsPlaying,
+    oscillator,
+    setOscillator,
     baseFreq,
     setBaseFreq,
     harmonyFreq,
-    // setHarmonyFreq,
     basePan,
     harmonyPan,
     beatFreq,
@@ -26,12 +25,12 @@ function App() {
       <Controls1
         baseFreq={baseFreq}
         setBaseFreq={setBaseFreq}
-        // harmonyFreq={harmonyFreq}
-        // setHarmonyFreq={setHarmonyFreq}
         volume={volume}
         setVolume={setVolume}
         beatFreq={beatFreq}
         setBeatFreq={setBeatFreq}
+        oscillator={oscillator}
+        setOscillator={setOscillator}
       />
 
       <Debug

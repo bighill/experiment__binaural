@@ -1,18 +1,23 @@
-.controls {
+.table {
+  display: table;
   margin: 1rem 0;
 }
-.control {
-  display: flex;
-  max-width: 22rem;
-  /* NOTE this layout is shaky, i don't like it */
 
-  label {
-    flex-grow: 1;
-    padding: 0.5rem 1rem;
-    text-align: right;
-  }
+.tr {
+  display: table-row;
+}
 
-  input {
-    flex-shrink: 0;
-  }
+.tdLeft,
+.tdRight {
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 0.5rem;
+}
+
+.tdLeft {
+  text-align: right;
+}
+
+.tdRight {
+  padding-left: 0.5rem;
 }

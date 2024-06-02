@@ -20,78 +20,83 @@ function Debug({
   beatFreq: number
 }) {
   return (
-    <div className={style.debug}>
-      <section className={style.row}>
-        <div>Tone Init</div>
-        <div className={style.value}>
-          <span>{hasToneInit ? 'Yes' : 'No'}</span>
+    <div className={style.table}>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Tone Init</label>
+        </div>
+        <div className={style.tdRight}>
+          <span className={style.value}>{hasToneInit ? 'Yes' : 'No'}</span>
+        </div>
+      </div>
+
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Playing</label>
+        </div>
+        <div className={style.tdRight}>
+          <span className={style.value}>{isPlaying ? 'Yes' : 'No'}</span>
         </div>
         <div></div>
-      </section>
+      </div>
 
-      <section className={style.row}>
-        <div>Playing</div>
-        <div className={style.value}>
-          <span>{isPlaying ? 'Yes' : 'No'}</span>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Volume</label>
         </div>
-        <div></div>
-      </section>
+        <div className={style.tdRight}>
+          <span className={style.value}>{volume}</span>
+          dB
+        </div>
+      </div>
 
-      <section className={style.row}>
-        <div>Volume</div>
-        <div className={style.value}>
-          <span>{volume}</span>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Base Freq</label>
         </div>
-        <div>
-          <span>dB</span>
+        <div className={style.tdRight}>
+          <span className={style.value}>{baseFreq}</span>
+          Hz
         </div>
-      </section>
+      </div>
 
-      <section className={style.row}>
-        <div>Base Freq</div>
-        <div className={style.value}>
-          <span>{baseFreq}</span>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Harmony Freq</label>
         </div>
-        <div>
-          <span>Hz</span>
+        <div className={style.tdRight}>
+          <span className={style.value}>{harmonyFreq}</span>
+          Hz
         </div>
-      </section>
+      </div>
 
-      <section className={style.row}>
-        <div>Harmony Freq</div>
-        <div className={style.value}>
-          <span>{harmonyFreq}</span>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Beat Freq</label>
         </div>
-        <div>
-          <span>Hz</span>
+        <div className={style.tdRight}>
+          <span className={style.value}>{beatFreq}</span>
+          Hz
         </div>
-      </section>
+      </div>
 
-      <section className={style.row}>
-        <div>Beat Freq</div>
-        <div className={style.value}>
-          <span>{beatFreq}</span>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Base Pan</label>
         </div>
-        <div>
-          <span>Hz</span>
+        <div className={style.tdRight}>
+          <span className={style.value}>{basePan ?? '_'}</span>
         </div>
-      </section>
+      </div>
 
-      <section className={style.row}>
-        <div>Base Pan</div>
-        <div className={style.value}>
-          <span>{basePan ?? '_'}</span>
+      <div className={style.tr}>
+        <div className={style.tdLeft}>
+          <label>Harmony Pan</label>
         </div>
-        <div></div>
-      </section>
-
-      <section className={style.row}>
-        <div>Harmony Pan</div>
-        <div className={style.value}>
-          <span>{harmonyPan ?? '_'}</span>
+        <div className={style.tdRight}>
+          <span className={style.value}>{harmonyPan ?? '_'}</span>
         </div>
-        <div></div>
-      </section>
+      </div>
     </div>
   )
 }
