@@ -22,30 +22,36 @@ function App() {
 
   return (
     <main>
-      <Controls1
-        baseFreq={baseFreq}
-        setBaseFreq={setBaseFreq}
-        volume={volume}
-        setVolume={setVolume}
-        beatFreq={beatFreq}
-        setBeatFreq={setBeatFreq}
-        oscillator={oscillator}
-        setOscillator={setOscillator}
-      />
+      <div className="card">
+        <Controls1
+          baseFreq={baseFreq}
+          setBaseFreq={setBaseFreq}
+          volume={volume}
+          setVolume={setVolume}
+          beatFreq={beatFreq}
+          setBeatFreq={setBeatFreq}
+          oscillator={oscillator}
+          setOscillator={setOscillator}
+        />
+      </div>
 
-      <Debug
-        hasToneInit={hasToneInit}
-        isPlaying={isPlaying}
-        volume={volume}
-        baseFreq={baseFreq}
-        harmonyFreq={harmonyFreq}
-        basePan={basePan}
-        harmonyPan={harmonyPan}
-        beatFreq={beatFreq}
-      />
+      <div className="card">
+        <Debug
+          hasToneInit={hasToneInit}
+          isPlaying={isPlaying}
+          volume={volume}
+          baseFreq={baseFreq}
+          harmonyFreq={harmonyFreq}
+          basePan={basePan}
+          harmonyPan={harmonyPan}
+          beatFreq={beatFreq}
+        />
+      </div>
 
-      <div className="btn" onClick={() => setIsPlaying(!isPlaying)}>
-        {isPlaying ? 'Pause' : 'Play'}
+      <div className="card">
+        <div className="btn" onClick={() => setIsPlaying(!isPlaying)}>
+          {isPlaying ? 'Pause' : 'Play'}
+        </div>
       </div>
     </main>
   )

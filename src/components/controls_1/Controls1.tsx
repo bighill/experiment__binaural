@@ -77,6 +77,7 @@ function Controls1({
             value={oscillator}
             onChange={(ev) => setOscillator(ev.target.value as OscillatorType)}
           >
+            <option value="sine">Sine</option>
             <option value="square">Square</option>
             <option value="sawtooth">Sawtooth</option>
             <option value="triangle">Triangle</option>

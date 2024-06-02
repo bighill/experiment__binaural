@@ -13,6 +13,11 @@
   padding-bottom: 0.5rem;
 }
 
+.tr:last-child .tdLeft,
+.tr:last-child .tdRight {
+  padding-bottom: 0;
+}
+
 .tdLeft {
   text-align: right;
 }

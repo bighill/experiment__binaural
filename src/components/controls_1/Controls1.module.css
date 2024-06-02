@@ -1,6 +1,5 @@
 .table {
   display: table;
-  margin: 1rem 0;
 }
 
 .tr {
@@ -12,6 +11,11 @@
   display: table-cell;
   vertical-align: middle;
   padding-bottom: 0.5rem;
+}
+
+.tr:last-child .tdLeft,
+.tr:last-child .tdRight {
+  padding-bottom: 0;
 }
 
 .tdLeft {

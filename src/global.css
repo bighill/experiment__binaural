@@ -8,6 +8,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.card {
+  margin: 3rem;
+}
+
 .btn {
   display: inline-block;
   background: var(--color-fg);
