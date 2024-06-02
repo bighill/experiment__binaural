@@ -1,16 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import * as Tone from 'tone'
 
-import { Frequency } from '../type'
-
 function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(-20)
-  const [freq, setFreq] = useState<Frequency>({
-    base: 440,
-    harmony: 550,
-  })
+  const [baseFreq, setBaseFreq] = useState(100)
+  const [harmonyFreq, setHarmonyFreq] = useState(110)
+  const [beatFreq, setBeatFreq] = useState(10)
 
   /**
    * Set these vars here
@@ -27,8 +24,8 @@ function useTones() {
   const handleUpdateSynth = () => {
     if (isPlaying) {
       if (synthLeft.current && synthRight.current) {
-        synthLeft.current.triggerAttack(freq.base)
-        synthRight.current.triggerAttack(freq.harmony)
+        synthLeft.current.triggerAttack(baseFreq)
+        synthRight.current.triggerAttack(harmonyFreq)
       } else {
         console.error('no synth')
       }
@@ -84,44 +81,45 @@ function useTones() {
    */
   useEffect(() => {
     if (isPlaying && synthLeft.current) {
-      synthLeft.current.frequency.setValueAtTime(freq.base, Tone.now())
+      synthLeft.current.frequency.setValueAtTime(baseFreq, Tone.now())
     }
-  }, [freq.base])
+  }, [baseFreq])
 
   /**
    * Set harmony frequency
    */
   useEffect(() => {
     if (isPlaying && synthRight.current) {
-      synthRight.current.frequency.setValueAtTime(freq.harmony, Tone.now())
+      synthRight.current.frequency.setValueAtTime(harmonyFreq, Tone.now())
     }
-  }, [freq.harmony])
+  }, [harmonyFreq])
 
   /**
-   * Status report
+   * Set beat frequency
    */
-  // TODO convert status report to Debug component
   useEffect(() => {
-    const status = {
-      hasToneInit,
-      isPlaying,
-      volume,
-      pan: {
-        base: panLeft.current?.pan.value,
-        harmony: panRight.current?.pan.value,
-      },
-      freq,
+    if (isPlaying && synthLeft.current && synthRight.current) {
+      const _harmonyFreq = baseFreq + beatFreq
+      synthRight.current.frequency.setValueAtTime(_harmonyFreq, Tone.now())
+      setHarmonyFreq(_harmonyFreq)
+      console.log(_harmonyFreq)
     }
-    console.table(status)
-  }, [hasToneInit, isPlaying, volume, freq, panLeft, panRight])
+  }, [baseFreq, beatFreq])
 
   return {
-    volume,
-    setVolume,
+    hasToneInit,
     isPlaying,
     setIsPlaying,
-    freq,
-    setFreq,
+    volume,
+    setVolume,
+    basePan: panLeft.current?.pan.value,
+    harmonyPan: panRight.current?.pan.value,
+    baseFreq,
+    setBaseFreq,
+    harmonyFreq,
+    setHarmonyFreq,
+    beatFreq,
+    setBeatFreq,
   }
 }
 

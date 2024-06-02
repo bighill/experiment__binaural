@@ -1,18 +1,21 @@
-import { Frequency } from '../../type'
 import style from './Controls1.module.css'
 
 function Controls1({
   volume,
   setVolume,
-  freq,
-  setFreq,
+  baseFreq,
+  setBaseFreq,
+  //   harmonyFreq,
+  //   setHarmonyFreq,
   beatFreq,
   setBeatFreq,
 }: {
-  freq: Frequency
-  setFreq: (freq: Frequency) => void
   volume: number
   setVolume: (volume: number) => void
+  baseFreq: number
+  setBaseFreq: (baseFreq: number) => void
+  // harmonyFreq: number
+  // setHarmonyFreq: (harmonyFreq: number) => void
   beatFreq: number
   setBeatFreq: (beatFreq: number) => void
 }) {
@@ -24,7 +27,7 @@ function Controls1({
           type="range"
           min="-50"
           max="0"
-          step="0.01"
+          step="1"
           value={volume}
           onChange={(ev) => setVolume(Number(ev.target.value))}
         />
@@ -34,31 +37,31 @@ function Controls1({
         <label>Base Frequency</label>
         <input
           type="range"
-          min="20"
-          max="800"
-          value={freq.base}
-          onChange={(ev) => setFreq({ ...freq, base: Number(ev.target.value) })}
+          min="40"
+          max="300"
+          step="1"
+          value={baseFreq}
+          onChange={(ev) => setBaseFreq(Number(ev.target.value))}
         />
       </section>
 
-      <section className={style.control}>
+      {/* <section className={style.control}>
         <label>Harmony Frequency</label>
         <input
           type="range"
-          min="20"
-          max="800"
-          value={freq.harmony}
-          onChange={(ev) =>
-            setFreq({ ...freq, harmony: Number(ev.target.value) })
-          }
+          min="40"
+          max="300"
+          step="1"
+          value={harmonyFreq}
+          onChange={(ev) => setHarmonyFreq(Number(ev.target.value))}
         />
-      </section>
+      </section> */}
 
       <section className={style.control}>
         <label>Beat Frequency</label>
         <input
           type="range"
-          min="1"
+          min="0"
           max="100"
           value={beatFreq}
           onChange={(ev) => setBeatFreq(Number(ev.target.value))}

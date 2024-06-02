@@ -1,6 +1,7 @@
 body {
   --color-bg: black;
   --color-fg: white;
+  --color---: orange;
 
   background: var(--color-bg);
   color: var(--color-fg);
@@ -8,6 +9,7 @@ body {
 }
 
 .btn {
+  display: inline-block;
   background: var(--color-fg);
   color: var(--color-bg);
   border-radius: 5px;
