@@ -9,6 +9,10 @@ function App() {
 
   return (
     <main>
+      {/* TODO container component for these inputs, maintain various _containerized_ adaptations/experiments */}
+      {/* TODO volume */}
+      {/* TODO beat frequency ui component, worry about functionality later */}
+
       <input
         type="range"
         min="20"

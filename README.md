@@ -17,3 +17,7 @@ UI
   - Harmony freq hard-panned right
 - Control the difference between two tones to produce varying beat frequencies
 - Use [Tone.js](https://tonejs.github.io/)
+
+Resources
+
+- [webmd: What are binaural beats?](https://www.webmd.com/balance/what-are-binaural-beats)
