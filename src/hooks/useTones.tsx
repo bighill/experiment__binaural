@@ -3,7 +3,7 @@ import * as Tone from 'tone'
 
 import { Frequency } from '../type'
 
-const useTones = () => {
+function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [freq, setFreq] = useState<Frequency>({
@@ -11,6 +11,10 @@ const useTones = () => {
     harmony: 550,
   })
 
+  /**
+   * Set these vars here
+   * Don't instantiate before user interaction
+   */
   const synthLeft = useRef<Tone.Synth | null>(null)
   const synthRight = useRef<Tone.Synth | null>(null)
   const panLeft = useRef<Tone.Panner | null>(null)

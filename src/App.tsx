@@ -1,3 +1,4 @@
+import Controls1 from './components/controls_1/Controls1'
 import useTones from './hooks/useTones'
 
 function App() {
@@ -9,28 +10,7 @@ function App() {
 
   return (
     <main>
-      {/* TODO container component for these inputs, maintain various _containerized_ adaptations/experiments */}
-      {/* TODO volume */}
-      {/* TODO beat frequency ui component, worry about functionality later */}
-
-      <input
-        type="range"
-        min="20"
-        max="800"
-        value={freq.base}
-        onChange={(ev) => setFreq({ ...freq, base: Number(ev.target.value) })}
-      />
-
-      <input
-        type="range"
-        min="20"
-        max="800"
-        value={freq.harmony}
-        onChange={(ev) =>
-          setFreq({ ...freq, harmony: Number(ev.target.value) })
-        }
-      />
-
+      <Controls1 freq={freq} setFreq={setFreq} />
       <div className="btn" onClick={handleClick}>
         {isPlaying ? 'Pause' : 'Play'}
       </div>
