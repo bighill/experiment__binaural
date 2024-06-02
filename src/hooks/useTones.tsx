@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import * as Tone from 'tone'
 
-// TODO update harmonyFreq when baseFreq or beatFreq changes regardless of whether isPlaying
-
 function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -129,10 +127,10 @@ function useTones() {
    * Update beat frequency
    */
   useEffect(() => {
+    const _harmonyFreq = baseFreq + beatFreq
+    setHarmonyFreq(_harmonyFreq)
     if (isPlaying && synthLeft.current && synthRight.current) {
-      const _harmonyFreq = baseFreq + beatFreq
       synthRight.current.frequency.setValueAtTime(_harmonyFreq, Tone.now())
-      setHarmonyFreq(_harmonyFreq)
     }
   }, [baseFreq, beatFreq])
 
