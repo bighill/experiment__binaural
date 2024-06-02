@@ -2,16 +2,18 @@ import Controls1 from './components/controls_1/Controls1'
 import useTones from './hooks/useTones'
 
 function App() {
-  const { isPlaying, setIsPlaying, freq, setFreq } = useTones()
-
-  const handleClick = () => {
-    setIsPlaying(!isPlaying)
-  }
+  const { volume, setVolume, isPlaying, setIsPlaying, freq, setFreq } =
+    useTones()
 
   return (
     <main>
-      <Controls1 freq={freq} setFreq={setFreq} />
-      <div className="btn" onClick={handleClick}>
+      <Controls1
+        freq={freq}
+        setFreq={setFreq}
+        volume={volume}
+        setVolume={setVolume}
+      />
+      <div className="btn" onClick={() => setIsPlaying(!isPlaying)}>
         {isPlaying ? 'Pause' : 'Play'}
       </div>
     </main>

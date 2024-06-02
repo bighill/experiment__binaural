@@ -1,21 +1,31 @@
 import { Frequency } from '../../type'
 
 function Controls1({
+  volume,
+  setVolume,
   freq,
   setFreq,
 }: {
   freq: Frequency
   setFreq: (freq: Frequency) => void
+  volume: number
+  setVolume: (volume: number) => void
 }) {
-  {
-    /* TODO volume */
-  }
   {
     /* TODO beat frequency ui component, worry about functionality later */
   }
 
   return (
     <div>
+      <input
+        type="range"
+        min="-50"
+        max="0"
+        step="0.01"
+        value={volume}
+        onChange={(ev) => setVolume(Number(ev.target.value))}
+      />
+
       <input
         type="range"
         min="20"

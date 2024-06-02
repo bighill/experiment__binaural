@@ -6,6 +6,7 @@ import { Frequency } from '../type'
 function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [volume, setVolume] = useState(-20)
   const [freq, setFreq] = useState<Frequency>({
     base: 440,
     harmony: 550,
@@ -46,8 +47,8 @@ function useTones() {
     if (isPlaying && !hasToneInit) {
       console.log('instantiate tone... this should only happen once')
       Tone.start().then(() => {
-        synthLeft.current = new Tone.Synth().toDestination()
-        synthRight.current = new Tone.Synth().toDestination()
+        synthLeft.current = new Tone.Synth({ volume: volume }).toDestination()
+        synthRight.current = new Tone.Synth({ volume: volume }).toDestination()
         panLeft.current = new Tone.Panner(-1).toDestination()
         panRight.current = new Tone.Panner(1).toDestination()
         synthLeft.current.connect(panLeft.current)
@@ -67,6 +68,16 @@ function useTones() {
       }
     }
   }, [isPlaying])
+
+  /**
+   * Set volume
+   */
+  useEffect(() => {
+    if (isPlaying && synthLeft.current && synthRight.current) {
+      synthLeft.current.volume.setValueAtTime(volume, Tone.now())
+      synthRight.current.volume.setValueAtTime(volume, Tone.now())
+    }
+  }, [volume])
 
   /**
    * Set base frequency
@@ -103,6 +114,8 @@ function useTones() {
   }, [hasToneInit, isPlaying, freq, panLeft, panRight])
 
   return {
+    volume,
+    setVolume,
     isPlaying,
     setIsPlaying,
     freq,
