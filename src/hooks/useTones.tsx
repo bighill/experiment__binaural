@@ -100,18 +100,20 @@ function useTones() {
   /**
    * Status report
    */
+  // TODO convert status report to Debug component
   useEffect(() => {
     const status = {
       hasToneInit,
       isPlaying,
-      freq,
+      volume,
       pan: {
         base: panLeft.current?.pan.value,
         harmony: panRight.current?.pan.value,
       },
+      freq,
     }
     console.table(status)
-  }, [hasToneInit, isPlaying, freq, panLeft, panRight])
+  }, [hasToneInit, isPlaying, volume, freq, panLeft, panRight])
 
   return {
     volume,

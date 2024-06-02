@@ -1,0 +1,18 @@
+.controls {
+  margin: 1rem 0;
+}
+.control {
+  display: flex;
+  max-width: 22rem;
+  /* NOTE this layout is shaky, i don't like it */
+
+  label {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    text-align: right;
+  }
+
+  input {
+    flex-shrink: 0;
+  }
+}
