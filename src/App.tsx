@@ -20,6 +20,8 @@ function App() {
     setBeatFreq,
   } = useTones()
 
+  // TODO mobile-first layout
+
   return (
     <main>
       <div className="card">
@@ -35,6 +37,15 @@ function App() {
         />
       </div>
 
+      {/* TODO Controls2 
+          - [ ] volume 
+          - [ ] baseFreq 
+          - [ ] beatFreq 
+          - (not oscillator)
+          - [ ] FUI
+      */}
+
+      {/* TODO toggle debug data */}
       <div className="card">
         <Debug
           hasToneInit={hasToneInit}
@@ -48,6 +59,7 @@ function App() {
         />
       </div>
 
+      {/* TODO visual pulse that matches the beat, experiment */}
       <div className="card">
         <div className="btn" onClick={() => setIsPlaying(!isPlaying)}>
           {isPlaying ? 'Pause' : 'Play'}
