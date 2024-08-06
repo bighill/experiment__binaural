@@ -1,5 +1,7 @@
 # Binaural Beats Generator
 
+## The original plan
+
 Audio
 
 - Play two tones that are slightly out of tune
@@ -8,7 +10,8 @@ Audio
 Canvas
 
 - Visual representation of the two wave forms in real time
-- Use canvas or [Victory](https://commerce.nearform.com/open-source/victory/docs)
+- Maybe canvas or [Victory](https://commerce.nearform.com/open-source/victory/docs)
+- Visual pulsing that matches the beat frequency
 
 UI
 
@@ -58,3 +61,18 @@ Delta
 - Deep sleep
 - Anti-aging: cortisol reduction/DHEA increase
 - Access to the unconscious mind
+
+### Sliders to consider
+
+react
+
+- MUI material-ui https://mui.com/material-ui/react-slider/
+- MUI base-ui (w/out mui styles) https://mui.com/base-ui/react-slider/
+- https://zillow.github.io/react-slider/
+- https://github.com/n3r4zzurr0/range-slider-input#styling
+
+canvas
+
+- https://github.com/akalverboer/CanvasSlider
+- https://codepen.io/weslito/pen/Vwzpoa
+- canvas custom

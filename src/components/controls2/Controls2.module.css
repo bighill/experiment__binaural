@@ -1,0 +1,26 @@
+.controls2 {
+  display: flex;
+
+  > div {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+  }
+}
+
+.left {
+  flex: 1;
+}
+
+.center {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+
+.trigger {
+  color: skyblue;
+}

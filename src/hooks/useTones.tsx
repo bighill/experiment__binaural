@@ -4,10 +4,10 @@ import * as Tone from 'tone'
 function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(-20)
-  const [oscillator, setOscillator] = useState<OscillatorType>('square')
+  const [volume, setVolume] = useState(-10)
+  const [oscillator, setOscillator] = useState<OscillatorType>('sine')
   const [baseFreq, setBaseFreq] = useState(100)
-  const [harmonyFreq, setHarmonyFreq] = useState(110)
+  const [harmonyFreq, setHarmonyFreq] = useState(102)
   const [beatFreq, setBeatFreq] = useState(2)
 
   /**
