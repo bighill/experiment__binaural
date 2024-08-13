@@ -20,6 +20,7 @@ function App() {
     setBeatFreq,
   } = useTones()
 
+  // TODO strongly consider managing state through dexie
   // TODO mobile-first layout
 
   return (
