@@ -1,5 +1,6 @@
 .table {
   display: table;
+  padding: 1rem;
 }
 
 .tr {
@@ -20,16 +21,17 @@
 
 .tdLeft {
   text-align: right;
+
+  &:after {
+    content: '...';
+  }
+}
+
+.tdMiddle {
+  text-align: left;
+  padding-left: 0.5rem;
 }
 
 .tdRight {
   padding-left: 0.5rem;
-}
-
-.value {
-  display: inline-block;
-  color: var(--color-fg);
-  min-width: 2rem;
-  text-align: right;
-  padding-right: 0.5rem;
 }

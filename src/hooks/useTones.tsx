@@ -5,9 +5,9 @@ function useTones() {
   const [hasToneInit, setHasToneInit] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volume, setVolume] = useState(-20)
-  const [oscillator, setOscillator] = useState<OscillatorType>('square')
-  const [baseFreq, setBaseFreq] = useState(100)
-  const [harmonyFreq, setHarmonyFreq] = useState(110)
+  const [oscillator, setOscillator] = useState<OscillatorType>('sine')
+  const [baseFreq, setBaseFreq] = useState(200)
+  const [harmonyFreq, setHarmonyFreq] = useState(202)
   const [beatFreq, setBeatFreq] = useState(2)
 
   /**
@@ -132,6 +132,7 @@ function useTones() {
     if (isPlaying && synthLeft.current && synthRight.current) {
       synthRight.current.frequency.setValueAtTime(_harmonyFreq, Tone.now())
     }
+    console.log({ baseFreq, beatFreq, _harmonyFreq })
   }, [baseFreq, beatFreq])
 
   return {

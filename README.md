@@ -58,3 +58,25 @@ Delta
 - Deep sleep
 - Anti-aging: cortisol reduction/DHEA increase
 - Access to the unconscious mind
+
+## Todo
+
+TODO strongly consider managing state through dexie
+
+TODO mobile-first layout
+
+TODO visual pulse that matches the beat, experiment
+
+- research by hacking at these
+
+  - react
+
+    - MUI material-ui https://mui.com/material-ui/react-slider/
+    - MUI base-ui (w/out mui styles) https://mui.com/base-ui/react-slider/
+    - https://zillow.github.io/react-slider/
+    - https://github.com/n3r4zzurr0/range-slider-input#styling
+
+  - canvas
+    - https://github.com/akalverboer/CanvasSlider
+    - https://codepen.io/weslito/pen/Vwzpoa
+    - canvas custom

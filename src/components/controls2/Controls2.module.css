@@ -1,0 +1,10 @@
+.div {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 10px; /* Optional: space between columns */
+  align-items: center; /* Center items vertically */
+  height: 100%;
+  border: 1px solid tomato;
+  /* these percentages will be managed in js */
+  background: linear-gradient(to top, tomato 50%, orange 50%);
+}

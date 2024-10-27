@@ -1,3 +1,4 @@
+import { MAX_BEAT_FREQ, MIN_BEAT_FREQ } from '../controls2/const'
 import style from './Controls1.module.css'
 
 function Controls1({
@@ -60,8 +61,8 @@ function Controls1({
         <div className={style.tdRight}>
           <input
             type="range"
-            min="0"
-            max="100"
+            min={MIN_BEAT_FREQ}
+            max={MAX_BEAT_FREQ}
             value={beatFreq}
             onChange={(ev) => setBeatFreq(Number(ev.target.value))}
           />
