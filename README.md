@@ -59,13 +59,17 @@ Delta
 - Anti-aging: cortisol reduction/DHEA increase
 - Access to the unconscious mind
 
-## Todo
+## Project
 
-TODO strongly consider managing state through dexie
+NOTE strongly consider managing state through dexie
 
-TODO mobile-first layout
+- possibly two versions of the audio engine
+- one as-is via hooks and another via indexeddb
+- react router to nav between them
 
-TODO visual pulse that matches the beat, experiment
+NOTE maybe a visual pulse that matches the beat, experiment
+
+TODO refactor UI
 
 - research by hacking at these
 
