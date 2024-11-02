@@ -1,6 +1,8 @@
 import { MIN_BASE_FREQ, MAX_BASE_FREQ } from './const'
 import style from './Input.module.css'
 
+// NOTE this is not in use ATM
+
 interface InputProps {
   baseFreq: number
   setBaseFreq: (value: number) => void

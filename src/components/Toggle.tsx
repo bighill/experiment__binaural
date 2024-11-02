@@ -1,4 +1,4 @@
-import Card from './Card2'
+import Card from './Card'
 import style from './Toggle.module.css'
 
 interface ToggleProps {

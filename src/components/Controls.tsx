@@ -1,7 +1,7 @@
-import { MAX_BEAT_FREQ, MIN_BEAT_FREQ } from '../controls2/const'
-import style from './Controls1.module.css'
+import { MAX_BEAT_FREQ, MIN_BEAT_FREQ } from './const'
+import style from './Controls.module.css'
 
-function Controls1({
+function Controls({
   volume,
   setVolume,
   oscillator,
@@ -89,4 +89,4 @@ function Controls1({
   )
 }
 
-export default Controls1
+export default Controls

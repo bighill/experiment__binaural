@@ -1,4 +1,4 @@
-.div {
+.main {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two equal columns */
   gap: 10px; /* Optional: space between columns */

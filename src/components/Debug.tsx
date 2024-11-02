@@ -1,7 +1,7 @@
-import Card2 from './Card2'
-import style from './Debug2.module.css'
+import Card from './Card'
+import style from './Debug.module.css'
 
-function Debug2({
+function Debug({
   hasToneInit,
   isPlaying,
   volume,
@@ -21,7 +21,7 @@ function Debug2({
   beatFreq: number
 }) {
   return (
-    <Card2>
+    <Card>
       <div className={style.table}>
         <div className={style.tr}>
           <div className={style.tdLeft}>Tone Init</div>
@@ -71,8 +71,8 @@ function Debug2({
           <div className={style.tdRight}></div>
         </div>
       </div>
-    </Card2>
+    </Card>
   )
 }
 
-export default Debug2
+export default Debug

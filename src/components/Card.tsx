@@ -1,6 +1,6 @@
-import style from './Card2.module.css'
+import style from './Card.module.css'
 
-const Card2 = ({
+const Card = ({
   children,
   isBtn,
 }: {
@@ -14,4 +14,4 @@ const Card2 = ({
   )
 }
 
-export default Card2
+export default Card
