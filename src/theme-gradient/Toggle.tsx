@@ -6,7 +6,7 @@ interface ToggleProps {
   setIsPlaying: (value: boolean) => void
 }
 
-export const Toggle = ({ isPlaying, setIsPlaying }: ToggleProps) => {
+const Toggle = ({ isPlaying, setIsPlaying }: ToggleProps) => {
   return (
     <Card isBtn>
       <div className={style.toggle} onClick={() => setIsPlaying(!isPlaying)}>
@@ -15,3 +15,5 @@ export const Toggle = ({ isPlaying, setIsPlaying }: ToggleProps) => {
     </Card>
   )
 }
+
+export default Toggle
